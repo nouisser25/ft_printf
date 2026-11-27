@@ -6,7 +6,7 @@
 /*   By: anouisse <anouisse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 01:58:57 by anouisse          #+#    #+#             */
-/*   Updated: 2026/11/22 17:14:37 by anouisse         ###   ########.fr       */
+/*   Updated: 2026/11/27 16:07:55 by anouisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stdint.h>
 # include <unistd.h>
 
 int	ft_printf(const char *format, ...);
