@@ -6,7 +6,7 @@
 /*   By: anouisse <anouisse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 01:58:53 by anouisse          #+#    #+#             */
-/*   Updated: 2026/11/22 17:14:54 by anouisse         ###   ########.fr       */
+/*   Updated: 2026/11/27 15:57:09 by anouisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	while (format[i])
 	{
-		if (format[i] == '%' && format[i + 1])
+		if (format[i] == '%' && !format[i + 1])
+			len = -1;
+		else if (format[i] == '%')
 		{
 			len += ft_formats(args, format[i + 1]);
 			i++;
 		}
-		else if (format[i] != '%')
+		else
 			len += ft_putchar(format[i]);
 		i++;
 	}
