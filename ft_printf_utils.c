@@ -6,7 +6,7 @@
 /*   By: anouisse <anouisse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 01:58:50 by anouisse          #+#    #+#             */
-/*   Updated: 2026/11/27 16:21:07 by anouisse         ###   ########.fr       */
+/*   Updated: 2026/11/27 16:26:26 by anouisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,3 @@ int	ft_puthex(unsigned int n, const char format)
 		return (-1);
 	return (len + 1);
 }
-

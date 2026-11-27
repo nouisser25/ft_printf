@@ -6,7 +6,7 @@
 /*   By: anouisse <anouisse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 01:58:46 by anouisse          #+#    #+#             */
-/*   Updated: 2026/11/27 16:19:13 by anouisse         ###   ########.fr       */
+/*   Updated: 2026/11/27 16:26:34 by anouisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ int	ft_putptr(void *ptr)
 		return (-1);
 	return (len + res);
 }
-
