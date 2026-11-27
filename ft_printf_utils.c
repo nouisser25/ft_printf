@@ -6,7 +6,7 @@
 /*   By: anouisse <anouisse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 01:58:50 by anouisse          #+#    #+#             */
-/*   Updated: 2026/11/22 17:15:09 by anouisse         ###   ########.fr       */
+/*   Updated: 2026/11/27 16:21:07 by anouisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ int	ft_putstr(char *str)
 
 	if (!str)
 		return (ft_putstr("(null)"));
+	if (!*str)
+		return (write(1, "", 0));
 	i = 0;
 	while (str[i])
 	{
-		ft_putchar(str[i]);
+		if (ft_putchar(str[i]) == -1)
+			return (-1);
 		i++;
 	}
 	return (i);
@@ -36,34 +39,51 @@ int	ft_putnbr(int n)
 {
 	long	nb;
 	int		len;
+	int		res;
 
 	nb = n;
 	len = 0;
 	if (nb < 0)
 	{
-		len += ft_putchar('-');
+		if (ft_putchar('-') == -1)
+			return (-1);
+		len++;
 		nb = -nb;
 	}
 	if (nb >= 10)
-		len += ft_putnbr(nb / 10);
-	len += ft_putchar((nb % 10) + '0');
-	return (len);
+	{
+		res = ft_putnbr(nb / 10);
+		if (res == -1)
+			return (-1);
+		len += res;
+	}
+	if (ft_putchar((nb % 10) + '0') == -1)
+		return (-1);
+	return (len + 1);
 }
 
 int	ft_putnbr_unsigned(unsigned int n)
 {
 	int	len;
+	int	res;
 
 	len = 0;
 	if (n >= 10)
-		len += ft_putnbr_unsigned(n / 10);
-	len += ft_putchar((n % 10) + '0');
-	return (len);
+	{
+		res = ft_putnbr_unsigned(n / 10);
+		if (res == -1)
+			return (-1);
+		len += res;
+	}
+	if (ft_putchar((n % 10) + '0') == -1)
+		return (-1);
+	return (len + 1);
 }
 
 int	ft_puthex(unsigned int n, const char format)
 {
 	int		len;
+	int		res;
 	char	*base;
 
 	len = 0;
@@ -72,7 +92,14 @@ int	ft_puthex(unsigned int n, const char format)
 	else
 		base = "0123456789ABCDEF";
 	if (n >= 16)
-		len += ft_puthex(n / 16, format);
-	len += ft_putchar(base[n % 16]);
-	return (len);
+	{
+		res = ft_puthex(n / 16, format);
+		if (res == -1)
+			return (-1);
+		len += res;
+	}
+	if (ft_putchar(base[n % 16]) == -1)
+		return (-1);
+	return (len + 1);
 }
+
